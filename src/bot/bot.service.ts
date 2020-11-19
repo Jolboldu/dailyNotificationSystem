@@ -20,7 +20,7 @@ export class BotService {
   onModuleInit() {
     this.botMessage();
   }
-  
+    
   async botMessage() {        
     this.bot.on('message', async (msg:any) => {
         let start = "/start";

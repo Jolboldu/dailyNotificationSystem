@@ -6,10 +6,10 @@ import { BotService } from './bot.service';
 export class BotController {
   constructor(private readonly botService: BotService) {}
 
-  @Get()
-  getBotDialog(@Res() res) {
-    this.botService.botMessage();
-    res.status(HttpStatus.OK).send("Bot service started");
-  }
+  // @Get('/bot/turnon')
+  // getBotDialog(@Res() res) {
+  //   this.botService.botMessage();
+  //   res.status(HttpStatus.OK).send("Bot service started");
+  // }
 
 }
