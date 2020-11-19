@@ -15,6 +15,7 @@ username of bot : "@dnewstbot"
 /start command to start the chat
 /me command to get hash 
 
+http://ec2-3-127-36-250.eu-central-1.compute.amazonaws.com/  - app is serving on aws instance
 
 ## Installation
 
