@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import {User} from './database/user.schema';
-import {UserNotificanion} from './database/userNotifications.schema'
+import {UserNotification} from './database/userNotifications.schema'
 import { Model } from 'mongoose';
 import {CreateUserDto} from '../dto/create-user.dto'
 @Injectable()
 export class UserService {
   
   constructor(@InjectModel(User.name) private readonly userModel: Model<User>,
-              @InjectModel(UserNotificanion.name) private readonly userNotificationModel: Model<User>)
+              @InjectModel(UserNotification.name) private readonly userNotificationModel: Model<User>)
   {};
  
   createUser(data: CreateUserDto): void
@@ -24,12 +24,12 @@ export class UserService {
     }
   }
 
-  async findUser(newUsername:string): Promise<User>
+  async findUser(tmpId:number): Promise<User>
   {
     try
     {
       let user;
-      user = await this.userModel.findOne({username:newUsername});
+      user = await this.userModel.findOne({id:tmpId});
       return user;
     }
     catch(e)
