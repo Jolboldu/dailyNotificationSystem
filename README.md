@@ -17,6 +17,7 @@ username of bot : "@dnewstbot"
 
 http://ec2-3-127-36-250.eu-central-1.compute.amazonaws.com/  - app is serving on aws instance
 
+http://dvijstaticfiles.s3-website.eu-central-1.amazonaws.com/ - landing page
 ## Installation
 
 ```bash
