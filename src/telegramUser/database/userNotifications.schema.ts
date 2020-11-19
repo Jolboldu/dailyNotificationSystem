@@ -9,6 +9,9 @@ export class UserNotification extends Document {
   @Prop()
   message: string;
 
+  @Prop()
+  time: string;
+
   //@Prop()
   // somehow to define time
 }

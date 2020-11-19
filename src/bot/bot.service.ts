@@ -21,6 +21,10 @@ export class BotService {
     this.botMessage();
   }
     
+  async sendNotification(id:number, message:string) {
+    this.bot.sendMessage(id, message);
+  }
+
   async botMessage() {        
     this.bot.on('message', async (msg:any) => {
         let start = "/start";

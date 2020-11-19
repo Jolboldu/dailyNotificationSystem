@@ -13,16 +13,16 @@ export class UserController {
   }
 
   @Put('/user/:hash')
-  async updateUserNotification(@Param('hash') hash: string, @Body() data:{message:string}): Promise<any> {
+  async updateUserNotification(@Param('hash') hash: string, @Body() data:{message:string, time:string}): Promise<any> {
     let user = await this.cacheManager.get(hash);
-    let isSaved = await this.userService.updateNotification(data.message, user.id);
+    let isSaved = await this.userService.updateNotification(data.message, user.id, data.time);
     return isSaved;
   }
 
   @Post('/user/:hash')
-  async createUserNotification(@Param('hash') hash: string, @Body() data:{message:string}): Promise<any> {
+  async createUserNotification(@Param('hash') hash: string, @Body() data:{message:string, time:string}): Promise<any> {
     let user = await this.cacheManager.get(hash);
-    let isSaved = await this.userService.createNotification(data.message, user.id);
+    let isSaved = await this.userService.createNotification(data.message, user.id, data.time);
     return isSaved;
 
   }

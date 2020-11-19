@@ -38,13 +38,13 @@ export class UserService {
     }
   }
 
-  async findNotification(tmpUserId:number): Promise<User>
+  async findNotification(tmpUserId:number): Promise<UserNotification>
   {
     try
     {
-      let user;
-      user = await this.userNotificationModel.findOne({userId:tmpUserId});
-      return user;
+      let notification;
+      notification = await this.userNotificationModel.findOne({userId:tmpUserId});
+      return notification;
     }
     catch(e)
     {
@@ -52,7 +52,7 @@ export class UserService {
     }
   }
 
-  async createNotification(newMessage:string, newUserId:number): Promise<boolean>
+  async createNotification(newMessage:string, newUserId:number, newTime:string): Promise<boolean>
   {
     try
     {
@@ -60,7 +60,7 @@ export class UserService {
       if(lastNotification)
         throw 'there is already notification';
       
-      let notification =  new this.userNotificationModel({userId:newUserId, message:newMessage});
+      let notification =  new this.userNotificationModel({userId:newUserId, message:newMessage, time:newTime});
       await notification.save();
       return true;
     }
@@ -71,7 +71,7 @@ export class UserService {
     }
   }
 
-  async updateNotification(newMessage:string, newUserId:number): Promise<boolean>
+  async updateNotification(newMessage:string, newUserId:number, newTime:string): Promise<boolean>
   {
     try
     {
@@ -80,13 +80,28 @@ export class UserService {
         throw 'there is already notification';
       
       let notification =  new this.userNotificationModel({userId:newUserId, message:newMessage});
-      await this.userNotificationModel.findOneAndUpdate({userId: newUserId}, {userId:newUserId, message:newMessage})
+      await this.userNotificationModel.findOneAndUpdate(
+        {userId: newUserId}, {userId:newUserId, message:newMessage,time:newTime}
+        )
       return true;
     }
     catch(e)
     {
       console.log(e);
       return false;
+    }
+  }
+  async findNotificationsByTime(tmpTime:string): Promise<[UserNotification]>
+  {
+    try
+    {
+      let notification;
+      notification = await this.userNotificationModel.find({time:tmpTime});
+      return notification;
+    }
+    catch(e)
+    {
+      console.log(e);
     }
   }
 }
