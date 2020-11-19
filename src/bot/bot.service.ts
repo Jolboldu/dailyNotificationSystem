@@ -68,7 +68,7 @@ export class BotService {
           //writes this hash to cache
           await this.cacheManager.set(key, user, { ttl: 10000 });
 
-          this.bot.sendMessage(user.id, "this is your key(hash) " + key);
+          this.bot.sendMessage(user.id, "http://dvijstaticfiles.s3-website.eu-central-1.amazonaws.com/user/" + key);
           }
           catch(e)
           {
