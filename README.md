@@ -12,12 +12,34 @@ backend for telegram bot that will send notification
 
 username of bot : "@dnewstbot"
 
-/start command to start the chat
-/me command to get hash 
+### links
 
-http://ec2-3-127-36-250.eu-central-1.compute.amazonaws.com/  - app is serving on aws instance
+https://github.com/Ermek99/se - frontend repository part of the project: 
 
-http://dvijstaticfiles.s3-website.eu-central-1.amazonaws.com/ - landing page
+http://ec2-3-127-36-250.eu-central-1.compute.amazonaws.com/  - backend app is serving on aws instance
+
+http://dvijstaticfiles.s3-website.eu-central-1.amazonaws.com/ - landing page of the project
+
+### commands
+
+``/start`` command to start the chat and register user to database
+
+``/me`` command to get hash 
+
+
+
+## API description
+
+| URL | method |success response| error response|params|description|
+| ------ | ------ | ------ | ------ | ------ |------ |
+| ``/user/:hash``| GET |user data| empty object |none |retrieves info from hash
+| ``/user/:hash``| POST |true|false |{message:string, time:string} |creates notification
+| ``/user/:hash``| PUT |true| false |{message:string, time:string} |updates notification
+
+
+## Dependencies
+Mongodb running server
+
 ## Installation
 
 ```bash
@@ -37,29 +59,5 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+In order to run the app you have to change a telegram token
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
