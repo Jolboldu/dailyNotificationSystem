@@ -20,6 +20,8 @@ http://ec2-3-127-36-250.eu-central-1.compute.amazonaws.com/  - backend app is se
 
 http://dvijstaticfiles.s3-website.eu-central-1.amazonaws.com/ - landing page of the project
 
+https://trello.com/b/PEfYvpFa/daily-notification-system - trello board to track history of the app
+
 ### commands
 
 ``/start`` command to start the chat and register user to database
